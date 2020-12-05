@@ -15,6 +15,10 @@
 		BC80B24E257AC88B0053EB5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC80B24D257AC88B0053EB5D /* Assets.xcassets */; };
 		BC80B251257AC88B0053EB5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC80B24F257AC88B0053EB5D /* LaunchScreen.storyboard */; };
 		BCDD71AC257BE3D800F3CF5E /* ModelCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */; };
+		BCDD71B1257BFD3B00F3CF5E /* StoragePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */; };
+		BCDD71B6257BFEDB00F3CF5E /* DocumentsFolderWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */; };
+		BCDD71B7257BFEDB00F3CF5E /* DocumentsFolderReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B5257BFEDB00F3CF5E /* DocumentsFolderReader.swift */; };
+		BCDD71BA257C00C100F3CF5E /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		BC80B250257AC88B0053EB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC80B252257AC88B0053EB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCodables.swift; sourceTree = "<group>"; };
+		BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoragePaths.swift; sourceTree = "<group>"; };
+		BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsFolderWriter.swift; sourceTree = "<group>"; };
+		BCDD71B5257BFEDB00F3CF5E /* DocumentsFolderReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsFolderReader.swift; sourceTree = "<group>"; };
+		BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
 		DBAE7CBD632C75158D8F1814 /* Pods-MVVM-RxSwift-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-Test.release.xcconfig"; path = "Target Support Files/Pods-MVVM-RxSwift-Test/Pods-MVVM-RxSwift-Test.release.xcconfig"; sourceTree = "<group>"; };
 		F32F81515749211E208BC5F8 /* Pods_MVVM_RxSwift_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwift_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,6 +85,9 @@
 				BC80B244257AC8880053EB5D /* AppDelegate.swift */,
 				BC80B246257AC8880053EB5D /* SceneDelegate.swift */,
 				BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */,
+				BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */,
+				BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */,
+				BCDD71B3257BFEDB00F3CF5E /* WorkWithDocumentsFolder */,
 				BCDD71AE257BE3DE00F3CF5E /* Screens */,
 				BC80B24A257AC8880053EB5D /* Main.storyboard */,
 				BC80B24D257AC88B0053EB5D /* Assets.xcassets */,
@@ -92,6 +103,15 @@
 				BC80B248257AC8880053EB5D /* PostsListScreenViewController.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		BCDD71B3257BFEDB00F3CF5E /* WorkWithDocumentsFolder */ = {
+			isa = PBXGroup;
+			children = (
+				BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */,
+				BCDD71B5257BFEDB00F3CF5E /* DocumentsFolderReader.swift */,
+			);
+			path = WorkWithDocumentsFolder;
 			sourceTree = "<group>";
 		};
 		FA3E330B9DAABBFF83E850B4 /* Frameworks */ = {
@@ -216,10 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDD71B7257BFEDB00F3CF5E /* DocumentsFolderReader.swift in Sources */,
 				BCDD71AC257BE3D800F3CF5E /* ModelCodables.swift in Sources */,
+				BCDD71BA257C00C100F3CF5E /* ErrorTypes.swift in Sources */,
+				BCDD71B6257BFEDB00F3CF5E /* DocumentsFolderWriter.swift in Sources */,
 				BC80B249257AC8880053EB5D /* PostsListScreenViewController.swift in Sources */,
 				BC80B245257AC8880053EB5D /* AppDelegate.swift in Sources */,
 				BC80B247257AC8880053EB5D /* SceneDelegate.swift in Sources */,
+				BCDD71B1257BFD3B00F3CF5E /* StoragePaths.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

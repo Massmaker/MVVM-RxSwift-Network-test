@@ -19,18 +19,55 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2WM-MC-qo4">
                                 <rect key="frame" x="16" y="59" width="343" height="588"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" textLabel="7uC-BM-ZPH" detailTextLabel="qL4-Dh-xQO" style="IBUITableViewCellStyleSubtitle" id="oSN-7b-0Se">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="55.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oSN-7b-0Se" id="SvQ-1f-djZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7uC-BM-ZPH">
+                                                    <rect key="frame" x="16" y="10" width="34.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemOrangeColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qL4-Dh-xQO">
+                                                    <rect key="frame" x="16" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Posts count:]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq6-bc-g43">
+                                <rect key="frame" x="16" y="30" width="80" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2WM-MC-qo4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="59" id="71n-xr-S6a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rq6-bc-g43" secondAttribute="trailing" constant="20" id="Rgc-av-tAd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2WM-MC-qo4" secondAttribute="trailing" constant="16" id="SY9-56-wdo"/>
                             <constraint firstItem="2WM-MC-qo4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VbB-VG-9RP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2WM-MC-qo4" secondAttribute="bottom" constant="20" id="dOX-np-vAQ"/>
+                            <constraint firstItem="2WM-MC-qo4" firstAttribute="top" secondItem="Rq6-bc-g43" secondAttribute="bottom" constant="14" id="fDe-bk-Onn"/>
+                            <constraint firstItem="Rq6-bc-g43" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kXg-pd-2qF"/>
+                            <constraint firstItem="Rq6-bc-g43" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="uvL-if-rnK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="postsCountLabel" destination="Rq6-bc-g43" id="BQe-cz-yI3"/>
                         <outlet property="table" destination="2WM-MC-qo4" id="uiW-0d-IMr"/>
                     </connections>
                 </viewController>
@@ -42,6 +79,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

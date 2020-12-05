@@ -15,20 +15,37 @@ class PostsListScreenViewController: UIViewController {
    let postsRelay = BehaviorRelay<[Post]>(value:[])
    var postsResponse: Observable<[Post]>?
    
+   let tableDataSource = BehaviorRelay<[Post]>(value:[])
+   
    @IBOutlet private weak var table:UITableView?
+   @IBOutlet private weak var postsCountLabel:UILabel?
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
+      bindDataSource()
+      
       subscribeOnPostsDidUpdate()
+      
+      subscribeOnReadFromDocuments()
+      
+      guard let postsURL = documentsURL()?.appendingPathComponent("Posts.bin") else {
+         print("ERROR creating POSTs file URL")
+         return
+      }
+      
+      DocumentsFolderReader.readDataFromDocuments(for: .posts, at: postsURL)
    }
    
    private func subscribeOnPostsDidUpdate() {
+      
       //subscribe on posts received event
-      let disposable = postsRelay.asObservable().subscribe { (posts) in
+      postsRelay.asObservable().subscribe {[weak self] (posts) in
          
-         print("Posts count: \(posts.count)")
+         let postsCount = posts.count
          //TODO: reload table, subscribe on POST cell tap event
+         self?.postsCountLabel?.text = "Posts count: \(postsCount)"
+         self?.tableDataSource.accept(posts) //reload tableView
          
       } onError: { (postsError) in
          print("Posts Relay Error: \(postsError.localizedDescription)")
@@ -38,16 +55,16 @@ class PostsListScreenViewController: UIViewController {
          print("Posts Relay disposed")
       }
       .disposed(by: bag)
-
       
+   }
+  
+   private func tryToLoadPosts() {
       postsResponse = createNetworkObservable()
       
       postsResponse?.subscribe(onNext: {[weak self] (event) in
          self?.postsRelay.accept(event)
       })
       .disposed(by: bag)
-      
-      
    }
    
    private func createNetworkObservable() -> Observable<[Post]>? {
@@ -70,7 +87,7 @@ class PostsListScreenViewController: UIViewController {
          .flatMap { (request) in
             return URLSession.shared.rx.response(request: request)
          }
-         .share(replay: 1, scope: SubjectLifetimeScope.forever)
+         .share(replay: 1, scope: SubjectLifetimeScope.whileConnected)
          .filter { response, _ in
             return 200..<300 ~= response.statusCode
          }
@@ -130,6 +147,60 @@ class PostsListScreenViewController: UIViewController {
 //      .observe(on: MainScheduler.instance)
 //
 //      return ob
+   }
+   
+   private func subscribeOnReadFromDocuments() {
+      
+      DocumentsFolderReader.neededEntity
+         .subscribe(on:SerialDispatchQueueScheduler(qos: .default))
+         .observe(on:MainScheduler.instance)
+         .subscribe {[weak self] (decodable) in
+            if let posts = decodable as? [Post] {
+               self?.postsRelay.accept(posts)
+            }
+            
+      } onError: {[weak self] (error) in
+         print("File POSTS reading error: \(error)")
+         
+         if let fileError = error as? FileError {
+         
+            switch fileError {
+            case .failedToConvert:
+               print("Unknown error while converting POSTs from disk")
+            case .notExists(let message):
+               if let errorMessage = message {
+                  print(#function + " error message received: \(errorMessage)")
+               }
+               //make a netwotk request and try save to Disk later
+               self?.tryToLoadPosts()
+            }
+         }
+      } onCompleted: {
+         print("File POSTS reading completed")
+      } onDisposed: {
+         print("File POSTS reading disposed")
+      }
+      .disposed(by: bag)
+   }
+   
+   private func bindDataSource() {
+      guard let tableView = table else {
+         return
+      }
+      
+      
+      
+      tableDataSource.bind(to:tableView.rx.items(cellIdentifier: "PostCell", cellType:UITableViewCell.self )) { index, post, cell in
+         
+         var state = cell.defaultContentConfiguration()
+         
+         state.text = post.title
+         
+         state.secondaryText = post.body
+         
+         cell.contentConfiguration = state
+         
+      }.disposed(by: bag)
    }
 }
 
