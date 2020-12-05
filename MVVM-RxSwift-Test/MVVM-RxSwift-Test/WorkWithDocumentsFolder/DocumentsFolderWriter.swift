@@ -10,6 +10,8 @@ import RxSwift
 
 class DocumentsFolderWriter {
 
+  
+   
    class func writeEntity<T:Encodable>(_ entity:T, toURL:URL) -> Bool {
       
       var didWrite = false

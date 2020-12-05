@@ -34,7 +34,10 @@ class PostsListScreenViewController: UIViewController {
          return
       }
       
-      DocumentsFolderReader.readDataFromDocuments(for: .posts, at: postsURL)
+      DispatchQueue(label: "ReaddPosts.background.queue").async {
+         DocumentsFolderReader.readDataFromDocuments(for: .posts, at: postsURL)
+      }
+      
    }
    
    private func subscribeOnPostsDidUpdate() {
@@ -155,6 +158,7 @@ class PostsListScreenViewController: UIViewController {
          .subscribe(on:SerialDispatchQueueScheduler(qos: .default))
          .observe(on:MainScheduler.instance)
          .subscribe {[weak self] (decodable) in
+            print("main thread: \(Thread.isMainThread)")
             if let posts = decodable as? [Post] {
                self?.postsRelay.accept(posts)
             }
