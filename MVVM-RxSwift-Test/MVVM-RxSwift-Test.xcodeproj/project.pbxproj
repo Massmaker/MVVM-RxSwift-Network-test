@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3BF061C2E5A6BB8EA5661D7A /* Pods_MVVM_RxSwift_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32F81515749211E208BC5F8 /* Pods_MVVM_RxSwift_Test.framework */; };
+		BC36A1A5257E72750047AD69 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC36A1A4257E72750047AD69 /* PostsService.swift */; };
+		BC36A1A8257E74F40047AD69 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC36A1A7257E74F40047AD69 /* PostsListViewModel.swift */; };
+		BC36A1AB257E75DD0047AD69 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC36A1AA257E75DD0047AD69 /* PostViewModel.swift */; };
+		BC36A1AE257E7F7A0047AD69 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC36A1AD257E7F7A0047AD69 /* AppCoordinator.swift */; };
 		BC80B245257AC8880053EB5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC80B244257AC8880053EB5D /* AppDelegate.swift */; };
 		BC80B247257AC8880053EB5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC80B246257AC8880053EB5D /* SceneDelegate.swift */; };
 		BC80B249257AC8880053EB5D /* PostsListScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC80B248257AC8880053EB5D /* PostsListScreenViewController.swift */; };
@@ -23,6 +27,10 @@
 
 /* Begin PBXFileReference section */
 		4FF36C19E801165C1C63116C /* Pods-MVVM-RxSwift-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-Test.debug.xcconfig"; path = "Target Support Files/Pods-MVVM-RxSwift-Test/Pods-MVVM-RxSwift-Test.debug.xcconfig"; sourceTree = "<group>"; };
+		BC36A1A4257E72750047AD69 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
+		BC36A1A7257E74F40047AD69 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
+		BC36A1AA257E75DD0047AD69 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		BC36A1AD257E7F7A0047AD69 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BC80B241257AC8880053EB5D /* MVVM-RxSwift-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-RxSwift-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC80B244257AC8880053EB5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC80B246257AC8880053EB5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +69,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BC36A1B0257E8B020047AD69 /* PostViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BC36A1A7257E74F40047AD69 /* PostsListViewModel.swift */,
+				BC36A1AA257E75DD0047AD69 /* PostViewModel.swift */,
+			);
+			path = PostViewModels;
+			sourceTree = "<group>";
+		};
 		BC80B238257AC8880053EB5D = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +104,8 @@
 				BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */,
 				BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */,
 				BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */,
+				BC36A1A4257E72750047AD69 /* PostsService.swift */,
+				BC36A1AD257E7F7A0047AD69 /* AppCoordinator.swift */,
 				BCDD71B3257BFEDB00F3CF5E /* WorkWithDocumentsFolder */,
 				BCDD71AE257BE3DE00F3CF5E /* Screens */,
 				BC80B24A257AC8880053EB5D /* Main.storyboard */,
@@ -101,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				BC80B248257AC8880053EB5D /* PostsListScreenViewController.swift */,
+				BC36A1B0257E8B020047AD69 /* PostViewModels */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -236,11 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC36A1AE257E7F7A0047AD69 /* AppCoordinator.swift in Sources */,
 				BCDD71B7257BFEDB00F3CF5E /* DocumentsFolderReader.swift in Sources */,
 				BCDD71AC257BE3D800F3CF5E /* ModelCodables.swift in Sources */,
+				BC36A1A5257E72750047AD69 /* PostsService.swift in Sources */,
 				BCDD71BA257C00C100F3CF5E /* ErrorTypes.swift in Sources */,
 				BCDD71B6257BFEDB00F3CF5E /* DocumentsFolderWriter.swift in Sources */,
 				BC80B249257AC8880053EB5D /* PostsListScreenViewController.swift in Sources */,
+				BC36A1A8257E74F40047AD69 /* PostsListViewModel.swift in Sources */,
+				BC36A1AB257E75DD0047AD69 /* PostViewModel.swift in Sources */,
 				BC80B245257AC8880053EB5D /* AppDelegate.swift in Sources */,
 				BC80B247257AC8880053EB5D /* SceneDelegate.swift in Sources */,
 				BCDD71B1257BFD3B00F3CF5E /* StoragePaths.swift in Sources */,

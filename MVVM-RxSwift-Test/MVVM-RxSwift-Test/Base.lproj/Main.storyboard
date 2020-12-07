@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -11,13 +11,13 @@
         <!--Posts List Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PostsListScreenViewController" customModule="MVVM_RxSwift_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostsListScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="PostsListScreenViewController" customModule="MVVM_RxSwift_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2WM-MC-qo4">
-                                <rect key="frame" x="16" y="59" width="343" height="588"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="647"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" textLabel="7uC-BM-ZPH" detailTextLabel="qL4-Dh-xQO" style="IBUITableViewCellStyleSubtitle" id="oSN-7b-0Se">
@@ -46,34 +46,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Posts count:]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq6-bc-g43">
-                                <rect key="frame" x="16" y="30" width="80" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2WM-MC-qo4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="59" id="71n-xr-S6a"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rq6-bc-g43" secondAttribute="trailing" constant="20" id="Rgc-av-tAd"/>
+                            <constraint firstItem="2WM-MC-qo4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="71n-xr-S6a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2WM-MC-qo4" secondAttribute="trailing" constant="16" id="SY9-56-wdo"/>
                             <constraint firstItem="2WM-MC-qo4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VbB-VG-9RP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2WM-MC-qo4" secondAttribute="bottom" constant="20" id="dOX-np-vAQ"/>
-                            <constraint firstItem="2WM-MC-qo4" firstAttribute="top" secondItem="Rq6-bc-g43" secondAttribute="bottom" constant="14" id="fDe-bk-Onn"/>
-                            <constraint firstItem="Rq6-bc-g43" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kXg-pd-2qF"/>
-                            <constraint firstItem="Rq6-bc-g43" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="uvL-if-rnK"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="postsCountLabel" destination="Rq6-bc-g43" id="BQe-cz-yI3"/>
                         <outlet property="table" destination="2WM-MC-qo4" id="uiW-0d-IMr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="95.802098950524751"/>
+            <point key="canvasLocation" x="-818" y="95"/>
         </scene>
     </scenes>
     <resources>

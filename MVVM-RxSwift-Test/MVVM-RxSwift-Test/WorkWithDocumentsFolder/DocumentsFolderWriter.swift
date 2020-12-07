@@ -29,6 +29,10 @@ class DocumentsFolderWriter {
          #endif
       }
       
+      #if DEBUG
+      print("Did Write to file: \(entity)")
+      #endif
+      
       return didWrite
    }
 }
