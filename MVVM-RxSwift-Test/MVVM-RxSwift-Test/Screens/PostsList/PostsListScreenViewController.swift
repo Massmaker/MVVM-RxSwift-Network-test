@@ -12,9 +12,7 @@ import RxCocoa
 class PostsListScreenViewController: UIViewController {
 
    let bag = DisposeBag()
-  
-   let tableDataSource = BehaviorRelay<[Post]>(value:[])
-
+   
    private var viewModel:PostsListViewModel?
    
    @IBOutlet private weak var table:UITableView?
@@ -40,6 +38,11 @@ class PostsListScreenViewController: UIViewController {
          return
       }
 
+      //fast answer to deselect cell on selection
+      postsTable.rx
+         .setDelegate(self)
+         .disposed(by: bag)
+      
       navigationItem.title = vm.title
       
       vm.fetchPostViewModels()
@@ -54,6 +57,17 @@ class PostsListScreenViewController: UIViewController {
             cell.contentConfiguration = state
          }
          .disposed(by:bag)
+      
+      //subscribe on cell tap
+      postsTable.rx.itemSelected.subscribe {[weak self] (event) in
+         self?.viewModel?.selectPostAt(event.row)
+      }.disposed(by: bag)
+   }
+}
+
+extension PostsListScreenViewController : UITableViewDelegate {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      tableView.deselectRow(at: indexPath, animated: true)
    }
 }
 
