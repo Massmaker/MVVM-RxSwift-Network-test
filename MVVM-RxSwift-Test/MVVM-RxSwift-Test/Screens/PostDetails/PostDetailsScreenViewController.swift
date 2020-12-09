@@ -50,26 +50,27 @@ class PostDetailsScreenViewController: UIViewController {
          .disposed(by: bag)
       
       // Do any additional setup after loading the view.
-      if let aPost = post, let table = ibCommentsTable {
-         
-         commentsViewModel.comments
-            .asObservable()
-            .bind(to: table.rx.items(cellIdentifier: CommentViewCell.reuseIdentifier,
-                                     cellType: CommentViewCell.self)) {_ , comment, cell in
-               var state = cell.defaultContentConfiguration()
-               
-               state.text = comment.body
-               
-               state.secondaryText = comment.name
-               
-               cell.contentConfiguration = state
-         }.disposed(by: bag)
-   
-         commentsViewModel.fetchComments(for: aPost.id)
+      guard let aPost = post, let table = ibCommentsTable else {
+         return
       }
       
-      ibPostTitleLabel?.text = post?.title
-      ibPostTextLabel?.text = post?.body
+      commentsViewModel.comments
+         .asObservable()
+         .bind(to: table.rx.items(cellIdentifier: CommentViewCell.reuseIdentifier,
+                                  cellType: CommentViewCell.self)) {_ , comment, cell in
+            var state = cell.defaultContentConfiguration()
+            
+            state.text = comment.body
+            
+            state.secondaryText = comment.name
+            
+            cell.contentConfiguration = state
+      }.disposed(by: bag)
+
+      commentsViewModel.fetchComments(for: aPost.id)
+      
+      ibPostTitleLabel?.text = aPost.title
+      ibPostTextLabel?.text = aPost.body
       
       //TODO: Bind post author label to downloaded post author
    }
