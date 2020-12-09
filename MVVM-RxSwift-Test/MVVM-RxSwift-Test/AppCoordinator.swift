@@ -40,18 +40,19 @@ class AppCoordinator {
          return
       }
       
-      let postDetailsScreen = PostDetailsScreenViewController.createWithPost(post)
-      
+      let postDetailsScreen = PostDetailsScreenViewController.createWithPost(post, coordinator: self)
+      //postDetailsScreen.edgesForExtendedLayout = []
       navController.pushViewController(postDetailsScreen, animated: true)
    }
    
-   func showPostsListScreen() {
-      
-   }
 }
 
 extension AppCoordinator : PostNavigation {
    func navigateToPost(_ post: Post) {
       showPostDetailsScreen(post:post)
+   }
+   
+   func goToPostsListScreen() {
+      (window.rootViewController as? UINavigationController)?.popToRootViewController(animated: true)
    }
 }

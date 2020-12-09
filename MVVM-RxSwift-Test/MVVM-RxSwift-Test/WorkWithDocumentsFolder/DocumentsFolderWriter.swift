@@ -11,7 +11,7 @@ import RxSwift
 class DocumentsFolderWriter {
 
   
-   
+   @discardableResult
    class func writeEntity<T:Encodable>(_ entity:T, toURL:URL) -> Bool {
       
       var didWrite = false
@@ -30,7 +30,7 @@ class DocumentsFolderWriter {
       }
       
       #if DEBUG
-      print("Did Write to file: \(entity)")
+      print("\(self) - Did Write to file '\(didWrite)': \(entity)")
       #endif
       
       return didWrite

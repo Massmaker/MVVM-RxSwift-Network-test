@@ -16,13 +16,13 @@ enum DataType {
 
 class DocumentsFolderReader {
    
-   private static let entityRead = PublishSubject<Decodable>()
+   private let entityRead = PublishSubject<Decodable>()
    
-   static var neededEntity: Observable<Decodable> {
+   var neededEntity: Observable<Decodable> {
       return entityRead.asObservable()
    }
    
-   class func readDataFromDocuments(for dataType:DataType, at url: URL) { //} -> T? {
+   func readDataFromDocuments(for dataType:DataType, at url: URL) { //} -> T? {
       
       guard FileManager.default.fileExists(atPath: url.path) else {
          entityRead.onError(FileError.notExists(message: "file does not exist"))

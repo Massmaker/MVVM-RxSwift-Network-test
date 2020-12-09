@@ -19,25 +19,31 @@ class PostsService: PostsServiceType {
    private let postsRelay = BehaviorRelay<[Post]>(value:[])
    private var postsResponse: Observable<[Post]>?
    
+   private lazy var docsumentsFolderReader:DocumentsFolderReader = DocumentsFolderReader()
+   
    func fetchPosts() -> Observable<[Post]> {
       
       subscribeOnReadFromDocuments()
       
-      guard let postsURL = documentsURL()?.appendingPathComponent("Posts.bin") else {
+      guard let postsURL = urlFor(.posts) else {
          print("ERROR creating POSTs file URL")
          
          return postsRelay.asObservable()
       }
       
-      DispatchQueue(label: "ReaddPosts.background.queue").async {
-         DocumentsFolderReader.readDataFromDocuments(for: .posts, at: postsURL)
+      DispatchQueue(label: "ReaddPosts.background.queue").async { [unowned self] in
+         docsumentsFolderReader.readDataFromDocuments(for: .posts, at: postsURL)
       }
     
       return postsRelay.asObservable()
    }
    
    private func subscribeOnReadFromDocuments() {
-      DocumentsFolderReader.neededEntity
+      docsumentsFolderReader =
+      DocumentsFolderReader()
+         
+      docsumentsFolderReader
+         .neededEntity
          .subscribe(on:SerialDispatchQueueScheduler(qos: .default))
          .observe(on:MainScheduler.instance)
          .subscribe {[weak self] (decodable) in
@@ -98,7 +104,7 @@ class PostsService: PostsServiceType {
             do {
                let posts = try JSONDecoder().decode([Post].self, from: data)
                
-               if let postsURL = documentsURL()?.appendingPathComponent("Posts.bin") {
+               if let postsURL = urlFor(.posts) {
                   DocumentsFolderWriter.writeEntity(posts, toURL:postsURL)
                }
                 

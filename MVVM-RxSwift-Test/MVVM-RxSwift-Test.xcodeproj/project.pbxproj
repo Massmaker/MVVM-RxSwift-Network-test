@@ -21,6 +21,10 @@
 		BC80B24C257AC8880053EB5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC80B24A257AC8880053EB5D /* Main.storyboard */; };
 		BC80B24E257AC88B0053EB5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC80B24D257AC88B0053EB5D /* Assets.xcassets */; };
 		BC80B251257AC88B0053EB5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC80B24F257AC88B0053EB5D /* LaunchScreen.storyboard */; };
+		BCC4F20E2580E82B00266FA5 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4F20D2580E82B00266FA5 /* CommentsViewModel.swift */; };
+		BCC4F2122580EAB300266FA5 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4F2112580EAB300266FA5 /* UserViewModel.swift */; };
+		BCC4F2182580F19900266FA5 /* CommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4F2162580F19900266FA5 /* CommentViewCell.swift */; };
+		BCC4F2192580F19900266FA5 /* CommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC4F2172580F19900266FA5 /* CommentViewCell.xib */; };
 		BCDD71AC257BE3D800F3CF5E /* ModelCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */; };
 		BCDD71B1257BFD3B00F3CF5E /* StoragePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */; };
 		BCDD71B6257BFEDB00F3CF5E /* DocumentsFolderWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */; };
@@ -45,6 +49,10 @@
 		BC80B24D257AC88B0053EB5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC80B250257AC88B0053EB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC80B252257AC88B0053EB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCC4F20D2580E82B00266FA5 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		BCC4F2112580EAB300266FA5 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		BCC4F2162580F19900266FA5 /* CommentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewCell.swift; sourceTree = "<group>"; };
+		BCC4F2172580F19900266FA5 /* CommentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentViewCell.xib; sourceTree = "<group>"; };
 		BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCodables.swift; sourceTree = "<group>"; };
 		BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoragePaths.swift; sourceTree = "<group>"; };
 		BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsFolderWriter.swift; sourceTree = "<group>"; };
@@ -89,6 +97,8 @@
 			children = (
 				BC47C244257F95E900160C07 /* PostDetailsScreenViewController.swift */,
 				BC47C245257F95E900160C07 /* PostDetailsScreenViewController.xib */,
+				BCC4F2152580F17800266FA5 /* CommentCell */,
+				BCC4F2102580EA9F00266FA5 /* ViewModels */,
 			);
 			path = PostDetails;
 			sourceTree = "<group>";
@@ -128,9 +138,8 @@
 				BCDD71AB257BE3D800F3CF5E /* ModelCodables.swift */,
 				BCDD71B0257BFD3B00F3CF5E /* StoragePaths.swift */,
 				BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */,
-				BC36A1A4257E72750047AD69 /* PostsService.swift */,
-				BC6B2EA2257FFE6800CAFB1F /* CommentsService.swift */,
 				BC36A1AD257E7F7A0047AD69 /* AppCoordinator.swift */,
+				BCC4F20B2580DC1B00266FA5 /* DataServices */,
 				BCDD71B3257BFEDB00F3CF5E /* WorkWithDocumentsFolder */,
 				BCDD71AE257BE3DE00F3CF5E /* Screens */,
 				BC80B24A257AC8880053EB5D /* Main.storyboard */,
@@ -139,6 +148,33 @@
 				BC80B252257AC88B0053EB5D /* Info.plist */,
 			);
 			path = "MVVM-RxSwift-Test";
+			sourceTree = "<group>";
+		};
+		BCC4F20B2580DC1B00266FA5 /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				BC36A1A4257E72750047AD69 /* PostsService.swift */,
+				BC6B2EA2257FFE6800CAFB1F /* CommentsService.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
+		BCC4F2102580EA9F00266FA5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BCC4F20D2580E82B00266FA5 /* CommentsViewModel.swift */,
+				BCC4F2112580EAB300266FA5 /* UserViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BCC4F2152580F17800266FA5 /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				BCC4F2162580F19900266FA5 /* CommentViewCell.swift */,
+				BCC4F2172580F19900266FA5 /* CommentViewCell.xib */,
+			);
+			path = CommentCell;
 			sourceTree = "<group>";
 		};
 		BCDD71AE257BE3DE00F3CF5E /* Screens */ = {
@@ -229,6 +265,7 @@
 				BC80B251257AC88B0053EB5D /* LaunchScreen.storyboard in Resources */,
 				BC80B24E257AC88B0053EB5D /* Assets.xcassets in Resources */,
 				BC80B24C257AC8880053EB5D /* Main.storyboard in Resources */,
+				BCC4F2192580F19900266FA5 /* CommentViewCell.xib in Resources */,
 				BC47C247257F95E900160C07 /* PostDetailsScreenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,14 +319,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC4F20E2580E82B00266FA5 /* CommentsViewModel.swift in Sources */,
 				BC47C246257F95E900160C07 /* PostDetailsScreenViewController.swift in Sources */,
 				BC36A1AE257E7F7A0047AD69 /* AppCoordinator.swift in Sources */,
 				BCDD71B7257BFEDB00F3CF5E /* DocumentsFolderReader.swift in Sources */,
 				BCDD71AC257BE3D800F3CF5E /* ModelCodables.swift in Sources */,
+				BCC4F2182580F19900266FA5 /* CommentViewCell.swift in Sources */,
 				BC36A1A5257E72750047AD69 /* PostsService.swift in Sources */,
 				BCDD71BA257C00C100F3CF5E /* ErrorTypes.swift in Sources */,
 				BCDD71B6257BFEDB00F3CF5E /* DocumentsFolderWriter.swift in Sources */,
 				BC80B249257AC8880053EB5D /* PostsListScreenViewController.swift in Sources */,
+				BCC4F2122580EAB300266FA5 /* UserViewModel.swift in Sources */,
 				BC36A1A8257E74F40047AD69 /* PostsListViewModel.swift in Sources */,
 				BC36A1AB257E75DD0047AD69 /* PostViewModel.swift in Sources */,
 				BC80B245257AC8880053EB5D /* AppDelegate.swift in Sources */,
