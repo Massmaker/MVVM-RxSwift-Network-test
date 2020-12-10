@@ -55,3 +55,38 @@ struct Comment: Codable {
         case id, name, email, body
     }
 }
+
+
+extension User {
+   
+   static func defaultEmptyUser() -> User {
+      
+      let dummyCompany = Company(name: "", catchPhrase: "", bs: "")
+      let dummyGeo = Geo(lat: "", lng: "")
+      let dummyAddress = Address(street: "", suite: "", city: "", zipcode: "", geo: dummyGeo)
+      
+      let user = User(id: -1, name: "", username: "", email: "", address: dummyAddress, phone: "", website: "", company: dummyCompany)
+      
+      return user
+   }
+}
+
+extension Encodable {
+   
+   var debugName:String {
+   
+      let defaultValue = "Codable"
+      
+      if self is User {
+         return "User"
+      }
+      else if self is [Comment] {
+         return "Comments"
+      }
+      else if self is [Post] {
+         return "Posts"
+      }
+      
+      return defaultValue
+   }
+}

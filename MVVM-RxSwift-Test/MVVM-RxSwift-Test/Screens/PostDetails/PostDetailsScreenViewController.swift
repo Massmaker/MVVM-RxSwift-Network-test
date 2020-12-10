@@ -24,6 +24,7 @@ class PostDetailsScreenViewController: UIViewController {
    private var postViewModel:PostViewModel?
    
    private var commentsViewModel:CommentsViewModel!
+   private lazy var userViewModel:UserViewModel = UserViewModel()
    
    @IBOutlet private weak var ibPostTitleLabel:UILabel?
    @IBOutlet private weak var ibPostAuthorLabel:UILabel?
@@ -69,10 +70,25 @@ class PostDetailsScreenViewController: UIViewController {
 
       commentsViewModel.fetchComments(for: aPost.id)
       
+      
+      //Non-reactive
       ibPostTitleLabel?.text = aPost.title
       ibPostTextLabel?.text = aPost.body
+      //
       
-      //TODO: Bind post author label to downloaded post author
+      
+      // Bind post author label to downloaded post author
+      userViewModel.user.asObservable().map { (aUser) -> String in
+         return aUser.username
+      }
+      .bind(to: ibPostAuthorLabel!.rx.text)
+      .disposed(by: bag)
+      
+      let willFetchUser =  userViewModel.fetchUser(with: aPost.userID)
+         
+      if !willFetchUser {
+         print("Error subscribing to USER fetch.")
+      }
    }
    
 }

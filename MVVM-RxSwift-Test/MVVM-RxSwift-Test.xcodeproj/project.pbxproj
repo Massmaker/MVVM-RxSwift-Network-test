@@ -30,6 +30,7 @@
 		BCDD71B6257BFEDB00F3CF5E /* DocumentsFolderWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */; };
 		BCDD71B7257BFEDB00F3CF5E /* DocumentsFolderReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B5257BFEDB00F3CF5E /* DocumentsFolderReader.swift */; };
 		BCDD71BA257C00C100F3CF5E /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */; };
+		BCF8D998258254F6007A8606 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF8D997258254F6007A8606 /* UsersService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		BCDD71B4257BFEDB00F3CF5E /* DocumentsFolderWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsFolderWriter.swift; sourceTree = "<group>"; };
 		BCDD71B5257BFEDB00F3CF5E /* DocumentsFolderReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsFolderReader.swift; sourceTree = "<group>"; };
 		BCDD71B9257C00C100F3CF5E /* ErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
+		BCF8D997258254F6007A8606 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		DBAE7CBD632C75158D8F1814 /* Pods-MVVM-RxSwift-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-Test.release.xcconfig"; path = "Target Support Files/Pods-MVVM-RxSwift-Test/Pods-MVVM-RxSwift-Test.release.xcconfig"; sourceTree = "<group>"; };
 		F32F81515749211E208BC5F8 /* Pods_MVVM_RxSwift_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwift_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 			children = (
 				BC36A1A4257E72750047AD69 /* PostsService.swift */,
 				BC6B2EA2257FFE6800CAFB1F /* CommentsService.swift */,
+				BCF8D997258254F6007A8606 /* UsersService.swift */,
 			);
 			path = DataServices;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				BC80B249257AC8880053EB5D /* PostsListScreenViewController.swift in Sources */,
 				BCC4F2122580EAB300266FA5 /* UserViewModel.swift in Sources */,
 				BC36A1A8257E74F40047AD69 /* PostsListViewModel.swift in Sources */,
+				BCF8D998258254F6007A8606 /* UsersService.swift in Sources */,
 				BC36A1AB257E75DD0047AD69 /* PostViewModel.swift in Sources */,
 				BC80B245257AC8880053EB5D /* AppDelegate.swift in Sources */,
 				BC80B247257AC8880053EB5D /* SceneDelegate.swift in Sources */,

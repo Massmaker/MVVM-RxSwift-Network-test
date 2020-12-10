@@ -30,19 +30,21 @@ class DocumentsFolderReader {
       }
       
       var result:Decodable?
+      var error:Error?
       
       do {
          let data = try Data(contentsOf: url)
+         let decoder = JSONDecoder()
          
          switch dataType {
          case .posts:
-            let posts = try JSONDecoder().decode([Post].self, from: data)
+            let posts = try decoder.decode([Post].self, from: data)
             result = posts.isEmpty ? nil : posts
          case .user:
-            let user = try JSONDecoder().decode(User.self, from: data)
+            let user = try decoder.decode(User.self, from: data)
             result = user
          case .comments:
-            let comments = try JSONDecoder().decode([Comment].self, from: data)
+            let comments = try decoder.decode([Comment].self, from: data)
             result = comments.isEmpty ? nil : comments
          }
       }
@@ -50,14 +52,19 @@ class DocumentsFolderReader {
          #if DEBUG
          print("DocumentsFolderReader -> ERROR decoding \(dataType) from file: \(dataReadingError.localizedDescription)")
          #endif
-         entityRead.onError(dataReadingError)
+         error = dataReadingError
       }
       
       if let rightResult = result {
          entityRead.onNext(rightResult) //success
       }
       else {
-         entityRead.onError(FileError.failedToConvert)
+         if let anError = error {
+            entityRead.onError(anError)
+         }
+         else {
+            entityRead.onError(FileError.failedToConvert)
+         }
       }
    }
 }

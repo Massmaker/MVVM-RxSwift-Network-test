@@ -44,11 +44,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0V-Uc-g28">
+                    <rect key="frame" x="257" y="50" width="17" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8l9-CN-hcq" secondAttribute="trailing" constant="16" id="6gz-CZ-iI5"/>
+                <constraint firstItem="U0V-Uc-g28" firstAttribute="firstBaseline" secondItem="3C6-LU-KUK" secondAttribute="firstBaseline" id="6tR-p9-hU5"/>
                 <constraint firstItem="HmE-PL-0lB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ByG-Vf-A0B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HmE-PL-0lB" secondAttribute="trailing" constant="16" id="EnA-mr-KYh"/>
                 <constraint firstItem="HmE-PL-0lB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="FxN-qh-1UL"/>
@@ -59,6 +66,7 @@
                 <constraint firstItem="2p1-9l-POS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ZsH-qE-KWi"/>
                 <constraint firstItem="8l9-CN-hcq" firstAttribute="top" secondItem="2p1-9l-POS" secondAttribute="bottom" constant="40" id="fnX-eR-J40"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2p1-9l-POS" secondAttribute="trailing" constant="16" id="nfe-mp-36X"/>
+                <constraint firstItem="3C6-LU-KUK" firstAttribute="leading" secondItem="U0V-Uc-g28" secondAttribute="trailing" constant="4" id="qcq-cY-Ktj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3C6-LU-KUK" secondAttribute="trailing" constant="16" id="rUY-93-5bS"/>
             </constraints>
             <point key="canvasLocation" x="140" y="89.505247376311857"/>

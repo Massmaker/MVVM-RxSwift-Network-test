@@ -124,13 +124,13 @@ class CommentsService: CommentsServiceType {
          .subscribe(on:SerialDispatchQueueScheduler(qos: .default))
          .observe(on:MainScheduler.instance)
          .subscribe {[weak self] (decodable) in
-            print("main thread: \(Thread.isMainThread)")
+            
             if let comments = decodable as? [Comment] {
                self?.commentsRelay.accept(comments)
             }
             
       } onError: {[weak self] (error) in
-         print("File POSTS reading error: \(error)")
+         print("File COMMENTS reading error: \(error)")
          
          if let fileError = error as? FileError {
          
@@ -146,9 +146,9 @@ class CommentsService: CommentsServiceType {
             }
          }
       } onCompleted: {
-         print("File POSTS reading completed")
+         print("File COMMENTS reading completed")
       } onDisposed: {
-         print("File POSTS reading disposed")
+         print("File COMMENTS reading disposed")
       }
          .disposed(by: bag)
    }

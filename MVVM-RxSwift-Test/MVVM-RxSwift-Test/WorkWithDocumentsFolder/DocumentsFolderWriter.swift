@@ -10,29 +10,35 @@ import RxSwift
 
 class DocumentsFolderWriter {
 
-  
-   @discardableResult
-   class func writeEntity<T:Encodable>(_ entity:T, toURL:URL) -> Bool {
+   static private let writingQueue = DispatchQueue(label: "DocumentsWriting.queue", qos: DispatchQoS.utility, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.inherit, target: nil)
+   
+   
+   class func writeEntity<T:Encodable>(_ entity:T, toURL fileURL:URL){
       
-      var didWrite = false
-      
-      do {
-         let encodedPostsData = try JSONEncoder().encode(entity)
-         
-         try encodedPostsData.write(to: toURL)
-         
-         didWrite = true
-      }
-      catch (let encodeError) {
+      writingQueue.async(flags: .barrier) {
          #if DEBUG
-         print("DocumentsFolderWriter -> Encoding \(entity.self) error: \(encodeError.localizedDescription)")
+         print("--------\nDocumentsFolderWriter Begin writing \n - entity: '\(entity.debugName)'\n - to URL: \(fileURL)\n--------")
+         #endif
+         
+         var didWrite = false
+         
+         do {
+            let encodedData = try JSONEncoder().encode(entity)
+            
+            try encodedData.write(to: fileURL)
+            
+            didWrite = true
+         }
+         catch (let encodeError) {
+            #if DEBUG
+            print("DocumentsFolderWriter -> Encoding \(entity.self) error: \(encodeError.localizedDescription)")
+            #endif
+         }
+         
+         #if DEBUG
+         print("\(self) - Did Write to file: '\(didWrite)'")
          #endif
       }
-      
-      #if DEBUG
-      print("\(self) - Did Write to file '\(didWrite)': \(entity)")
-      #endif
-      
-      return didWrite
+     
    }
 }

@@ -47,7 +47,7 @@ class PostsService: PostsServiceType {
          .subscribe(on:SerialDispatchQueueScheduler(qos: .default))
          .observe(on:MainScheduler.instance)
          .subscribe {[weak self] (decodable) in
-            print("main thread: \(Thread.isMainThread)")
+            
             if let posts = decodable as? [Post] {
                self?.postsRelay.accept(posts)
             }
